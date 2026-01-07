@@ -1,0 +1,122 @@
+:root{
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --box-shadow : 0 4px 8px rgba(0,0,0,0.1);
+    --border: #e7e7e7
+}
+
+.darkmode{
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --box-shadow : 0 4px 8px rgba(218,218,218,0.1)
+    --border: #ffffff;
+}
+
+body{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.navbar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.nav-links{
+    display: flex;
+    gap: 80px;
+    padding: 20px;
+    margin: 20px;
+}
+
+li{
+    list-style: none;
+    display: inline;
+}
+
+.counter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+    font-size: 24px;
+}
+
+.card-container{
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  flex-wrap: wrap;
+    
+}
+
+.card-content{
+ overflow: hidden;
+ border:1px solid var(--border);
+ text-align: center;
+ width: 400px;
+ /* padding-bottom: 8px; */
+ background: var(--bg-color);
+ border-radius: 8px;
+ text-align: center;
+ transition: transform 0.3s, background 0.3s, opacity 0.3s;
+ height: 450px;
+}
+
+
+.card-content.hovered {
+  opacity: 1;
+  transform:translateY(-10px);
+  box-shadow: var(--box-shadow);
+  background: var(--bg-color);
+  z-index: 10;
+}
+
+.image-wrapper {
+    width: 100%;
+    overflow: hidden;       /* CONTAINS zoom */
+    border-radius: 8px 8px 0 0;
+    height: 280px;
+}
+
+.image-wrapper img {
+  width: 100%;
+  display: block;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.4s ease;
+}
+
+.card-content:hover .image-wrapper img {
+  transform: scale(1.7);
+}
+
+/* // Carousel Styles */
+.carousel .carousel-slides{
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.carousel-slides div{
+  flex-shrink: 0;
+  width: 100%;
+  height: 300px;
+  scroll-snap-align: start;
+
+}
