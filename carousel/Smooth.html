@@ -19,11 +19,36 @@
     *{
         box-sizing: border-box;
     }
-    .container{
+        .container {
         margin: auto;
         width: 100%;
-        max-width: 1300px;
+        max-width: 2000px;
+        height: 720px;
         overflow: hidden;
+        position: relative; /* important anchor */
+    }
+
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .container i {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.6);
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .fa-caret-left {
+        left: 10px;
+    }
+    .fa-caret-right {
+        right: 10px;
     }
 
     .slider{
@@ -37,26 +62,6 @@
         flex-shrink: 0;
         object-fit: cover;
     }
-
-    i{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.6);
-    color: white;
-    border: none;
-    padding: 10px;
-    margin: auto;
-    cursor: pointer;
-    }
-
-    .fa-caret-left {
-    left: 10px;
-    }
-    .fa-caret-right {
-    right: 10px;
-    }
-
 
     </style>
 </body>
