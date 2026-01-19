@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smooth Animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 <body>
     <section class="container">
+        <i class="fa-solid fa-caret-left" onclick="resetTimer(prevSlide)"></i>
         <div class="slider">
-            <!-- <button class="prev"> prev </button>
-            <button class="next"> next </button> -->
         </div>
+        <i class="fa-solid fa-caret-right" onclick="resetTimer(nextSlide)"></i>
+        
     </section>
     <style>
     *{
@@ -35,6 +38,26 @@
         object-fit: cover;
     }
 
+    i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: auto;
+    cursor: pointer;
+    }
+
+    .fa-caret-left {
+    left: 10px;
+    }
+    .fa-caret-right {
+    right: 10px;
+    }
+
+
     </style>
 </body>
 <script>
@@ -57,6 +80,7 @@
     const slides = document.querySelectorAll('.slider img');
 
     let currentIndex = 0;
+    let timerId;
 
     function getSlideWidth() {
         return slides[0].getBoundingClientRect().width;
@@ -71,12 +95,25 @@
     function nextSlide() {
         currentIndex = (currentIndex + 1) % slides.length;
         slider.style.transform = `translateX(-${currentIndex * getSlideWidth()}px)`;
-
-        setTimeout(nextSlide, 3000);
     }
 
-    nextSlide();
-    
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        slider.style.transform = `translateX(-${currentIndex * getSlideWidth()}px)`;
+    }
+
+    function autoplay(){
+       nextSlide();
+       timerId = setTimeout(autoplay,3000); 
+    }
+
+    function resetTimer(callback){
+        clearTimeout(timerId);
+        callback();
+        timerId = setTimeout(autoplay,3000);
+    }
+
+    autoplay();
     
 </script>
 </html>
